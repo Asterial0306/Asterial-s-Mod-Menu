@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "mod-menu",
+	"version": "${version}",
+	"name": "Asterial's Mod Menu",
+	"description": "Add a mod menu to your game!",
+	"authors": [
+		"Asterial"
+	],
+	"contact": {
+		"homepage": "",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "assets/mod-menu/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"asterial.mod.menu.ModMenu"
+		],
+		"client": [
+			"asterial.mod.menu.client.ModMenuClient"
+		],
+		"mod-menu": [
+			"asterial.mod.menu.client.config.ModMenuConfigProvider"
+		]
+	},
+	"mixins": [
+		"mod-menu.mixins.json",
+		{
+			"config": "mod-menu.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

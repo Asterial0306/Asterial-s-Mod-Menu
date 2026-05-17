@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "asterial.mod.menu.client.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"TitleScreenMixin",
+		"GameMenuScreenMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
