@@ -76,17 +76,17 @@ public class ConfirmOpenUrlScreen extends Screen {
 		int centerX = this.dialogX + this.dialogW / 2;
 		int textTop = this.dialogY + UI.PADDING + 8;
 
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.url.confirm_msg"),
-			centerX, textTop,
-			UI.COLOR_TEXT);
+		Text confirmMsg = Text.translatable("mod-menu.url.confirm_msg");
+		context.drawText(this.textRenderer, confirmMsg,
+			centerX - this.textRenderer.getWidth(confirmMsg) / 2, textTop,
+			UI.COLOR_TEXT, true);
 
 		String displayUrl = this.url.length() > 45
 			? this.url.substring(0, 42) + "..." : this.url;
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.literal(displayUrl),
-			centerX, textTop + 14,
-			UI.COLOR_SECONDARY);
+		Text urlText = Text.literal(displayUrl);
+		context.drawText(this.textRenderer, urlText,
+			centerX - this.textRenderer.getWidth(urlText) / 2, textTop + 14,
+			UI.COLOR_SECONDARY, true);
 	}
 
 	@Override

@@ -159,8 +159,8 @@ public class ModMenuConfigScreen extends Screen {
 	public void render(DrawContext ctx, int mx, int my, float delta) {
 		super.render(ctx, mx, my, delta);
 
-		ctx.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.config.title"), this.width / 2, UI.TITLE_Y, UI.COLOR_TITLE);
+		Text configTitle = Text.translatable("mod-menu.config.title");
+		ctx.drawText(this.textRenderer, configTitle, this.width / 2 - this.textRenderer.getWidth(configTitle) / 2, UI.TITLE_Y, UI.COLOR_TITLE, true);
 
 		int items = 10;
 		int cardH = UI.PADDING * 2 + items * UI.ITEM_H + UI.GAP * (items - 1);
@@ -189,7 +189,7 @@ public class ModMenuConfigScreen extends Screen {
 	}
 
 	private void drawL(DrawContext ctx, int x, int y, String key) {
-		ctx.drawTextWithShadow(this.textRenderer, Text.translatable(key), x, y + 5, UI.COLOR_TEXT);
+		ctx.drawText(this.textRenderer, Text.translatable(key), x, y + 5, UI.COLOR_TEXT, true);
 	}
 
 	@Override

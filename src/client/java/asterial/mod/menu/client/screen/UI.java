@@ -12,11 +12,11 @@ public final class UI {
 	public static final int BTN_H = 20;
 	public static final int GAP = 8;
 
-	public static final int COLOR_TITLE = 0xFFFFFF;
-	public static final int COLOR_TEXT = 0xFFFFFF;
-	public static final int COLOR_SECONDARY = 0xAAAAAA;
-	public static final int COLOR_DIM = 0x888888;
-	public static final int COLOR_MUTED = 0x666666;
+	public static final int COLOR_TITLE = 0xFFFFFFFF;
+	public static final int COLOR_TEXT = 0xFFFFFFFF;
+	public static final int COLOR_SECONDARY = 0xFFAAAAAA;
+	public static final int COLOR_DIM = 0xFF888888;
+	public static final int COLOR_MUTED = 0xFF666666;
 	public static final int COLOR_DIVIDER = 0xFF555555;
 
 	private UI() {}

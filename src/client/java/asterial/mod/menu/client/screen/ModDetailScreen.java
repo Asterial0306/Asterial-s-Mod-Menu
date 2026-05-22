@@ -125,12 +125,13 @@ public class ModDetailScreen extends Screen {
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 		super.render(context, mouseX, mouseY, delta);
 
-		context.drawCenteredTextWithShadow(
+		context.drawText(
 			this.textRenderer,
 			Text.translatable("mod-menu.detail.title"),
-			this.width / 2,
+			this.width / 2 - this.textRenderer.getWidth(Text.translatable("mod-menu.detail.title")) / 2,
 			UI.TITLE_Y,
-			UI.COLOR_TITLE
+			UI.COLOR_TITLE,
+			true
 		);
 
 		int cardHeight = calculateCardHeight();
@@ -157,58 +158,58 @@ public class ModDetailScreen extends Screen {
 			context.fill(iconX, iconY, iconX + ICON_SIZE, iconY + ICON_SIZE, this.color);
 			String initial = this.modName.substring(0, 1).toUpperCase();
 			int textWidth = this.textRenderer.getWidth(initial);
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.literal(initial),
 				iconX + (ICON_SIZE - textWidth) / 2,
 				iconY + (ICON_SIZE - 8) / 2,
-				0xFFFFFF);
+				0xFFFFFFFF, true);
 		}
 
 		int textX = iconX + ICON_SIZE + 12;
 		int textY = iconY + 4;
 
-		context.drawTextWithShadow(this.textRenderer,
+		context.drawText(this.textRenderer,
 			Text.literal(this.modName),
 			textX, textY,
-			UI.COLOR_TEXT);
+			UI.COLOR_TEXT, true);
 		textY += 12;
 
-		context.drawTextWithShadow(this.textRenderer,
+		context.drawText(this.textRenderer,
 			Text.literal("v" + this.version),
 			textX, textY,
-			UI.COLOR_SECONDARY);
+			UI.COLOR_SECONDARY, true);
 		textY += 12;
 
-		context.drawTextWithShadow(this.textRenderer,
+		context.drawText(this.textRenderer,
 			Text.translatable("mod-menu.detail.id").append(Text.literal(this.modId)),
 			textX, textY,
-			UI.COLOR_DIM);
+			UI.COLOR_DIM, true);
 		textY += 12;
 
 		if (!this.author.isEmpty()) {
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.translatable("mod-menu.detail.author").append(Text.literal(this.author)),
 				textX, textY,
-				UI.COLOR_DIM);
+				UI.COLOR_DIM, true);
 			textY += 12;
 		}
 
 		if (!this.license.isEmpty()) {
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.translatable("mod-menu.detail.license").append(Text.literal(this.license)),
 				textX, textY,
-				UI.COLOR_DIM);
+				UI.COLOR_DIM, true);
 			textY += 12;
 		}
 
-		context.drawTextWithShadow(this.textRenderer,
+		context.drawText(this.textRenderer,
 			Text.translatable(switch (this.environment) {
 				case "CLIENT" -> "mod-menu.detail.env.client";
 				case "SERVER" -> "mod-menu.detail.env.server";
 				default -> "mod-menu.detail.env.universal";
 			}),
 			textX, textY,
-			UI.COLOR_DIM);
+			UI.COLOR_DIM, true);
 
 		int infoLineCount = getInfoLineCount();
 		int iconAreaHeight = Math.max(ICON_SIZE, infoLineCount * 12 + 4);
@@ -225,24 +226,24 @@ public class ModDetailScreen extends Screen {
 		if (!this.description.isEmpty()) {
 			String[] descLines = wrapText(this.description, this.cardWidth - UI.PADDING * 2);
 			for (String line : descLines) {
-				context.drawTextWithShadow(this.textRenderer,
+				context.drawText(this.textRenderer,
 					Text.literal(line),
 					contentX, descY,
-					UI.COLOR_SECONDARY);
+					UI.COLOR_SECONDARY, true);
 				descY += 10;
 			}
 		} else {
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.translatable("mod-menu.detail.no_desc"),
 				contentX, descY,
-				UI.COLOR_MUTED);
+				UI.COLOR_MUTED, true);
 		}
 
 		int typeY = this.cardTop + cardHeight - UI.PADDING - UI.BTN_H - UI.PADDING - 10;
-		context.drawTextWithShadow(this.textRenderer,
+		context.drawText(this.textRenderer,
 			Text.translatable(this.isLibrary ? "mod-menu.detail.type.library" : "mod-menu.detail.type.mod"),
 			contentX, typeY,
-			UI.COLOR_DIM);
+			UI.COLOR_DIM, true);
 	}
 
 	@Override

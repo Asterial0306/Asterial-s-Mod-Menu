@@ -26,7 +26,6 @@
 		]
 	},
 	"mixins": [
-		"mod-menu.mixins.json",
 		{
 			"config": "mod-menu.client.mixins.json",
 			"environment": "client"

@@ -418,9 +418,9 @@ public class ModMenuScreen extends Screen {
 				context.fill(sx, itemY, sx + sw, itemY + SUGGESTION_HEIGHT, 0xFF888888);
 			}
 
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.literal(item), sx + 4, itemY + 2,
-				isHistory ? 0xFFAAAAAA : 0xFFFFFF);
+				isHistory ? 0xFFAAAAAA : 0xFFFFFFFF, true);
 		}
 
 		}
@@ -439,12 +439,13 @@ public class ModMenuScreen extends Screen {
 	public void render(DrawContext context, int mouseX, int mouseY, float delta) {
 		super.render(context, mouseX, mouseY, delta);
 
-		context.drawCenteredTextWithShadow(
+		context.drawText(
 			this.textRenderer,
 			Text.translatable("mod-menu.mods_title"),
-			this.width / 2,
+			this.width / 2 - this.textRenderer.getWidth(Text.translatable("mod-menu.mods_title")) / 2,
 			14,
-			0xFFFFFF
+			0xFFFFFFFF,
+			true
 		);
 
 		int visibleHeight = this.listBottom - this.listTop;
@@ -487,30 +488,31 @@ public class ModMenuScreen extends Screen {
 				context.fill(iconX, iconY, iconX + this.iconSize, iconY + this.iconSize, entry.color);
 				String initial = entry.name.substring(0, 1).toUpperCase();
 				int textWidth = this.textRenderer.getWidth(initial);
-				context.drawTextWithShadow(
+				context.drawText(
 					this.textRenderer,
 					Text.literal(initial),
 					iconX + (this.iconSize - textWidth) / 2,
 					iconY + (this.iconSize - 8) / 2,
-					0xFFFFFF
+					0xFFFFFFFF,
+					true
 				);
 			}
 
-			context.drawTextWithShadow(this.textRenderer, Text.literal(entry.name), textX, contentBaseY, 0xFFFFFF);
+			context.drawText(this.textRenderer, Text.literal(entry.name), textX, contentBaseY, 0xFFFFFFFF, true);
 
 			if (showDesc) {
 				if (!entry.description.isEmpty()) {
 					String desc = truncateText(entry.description, this.textRenderer, maxTextWidth);
-					context.drawTextWithShadow(this.textRenderer, Text.literal(desc), textX, contentBaseY + lineH + gap, 0xAAAAAA);
+					context.drawText(this.textRenderer, Text.literal(desc), textX, contentBaseY + lineH + gap, 0xFFAAAAAA, true);
 				} else {
-					context.drawTextWithShadow(this.textRenderer, Text.literal("v" + entry.version), textX, contentBaseY + lineH + gap, 0x888888);
+					context.drawText(this.textRenderer, Text.literal("v" + entry.version), textX, contentBaseY + lineH + gap, 0xFF888888, true);
 				}
 			}
 
 			if (showAuthor) {
-				context.drawTextWithShadow(this.textRenderer,
+				context.drawText(this.textRenderer,
 					Text.translatable("mod-menu.detail.author").append(Text.literal(entry.author)),
-					textX, contentBaseY + (lineH + gap) * 2, 0x666666);
+					textX, contentBaseY + (lineH + gap) * 2, 0xFF666666, true);
 			}
 
 			int starSize = 10;
@@ -522,20 +524,20 @@ public class ModMenuScreen extends Screen {
 				&& mouseY >= starY - 2 && mouseY <= starY + starSize + 2;
 
 			if (ModMenuConfig.getInstance().enableBookmarks) {
-				context.drawTextWithShadow(this.textRenderer,
+				context.drawText(this.textRenderer,
 					Text.literal(isBookmarked ? "★" : "☆"),
 					starX, starY,
-					starHovered ? 0xFFE0B040 : (isBookmarked ? 0xFFD0A030 : 0xFF666666));
+					starHovered ? 0xFFE0B040 : (isBookmarked ? 0xFFD0A030 : 0xFF666666), true);
 			}
 
 			int detailX = this.listLeft + this.listWidth - 18;
 			int detailY = entryY + (this.entryHeight - 10) / 2;
 			boolean hovered = mouseX >= detailX && mouseX <= detailX + 12
 					&& mouseY >= detailY && mouseY <= detailY + 12;
-			context.drawTextWithShadow(this.textRenderer,
+			context.drawText(this.textRenderer,
 				Text.literal(">"),
 				detailX, detailY,
-				hovered ? 0xFFFFFF : 0x888888);
+				hovered ? 0xFFFFFFFF : 0xFF888888, true);
 		}
 
 		context.disableScissor();

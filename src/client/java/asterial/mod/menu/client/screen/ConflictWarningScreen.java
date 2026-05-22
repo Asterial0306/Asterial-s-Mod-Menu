@@ -58,24 +58,20 @@ public class ConflictWarningScreen extends Screen {
 		int centerX = this.dialogX + this.dialogW / 2;
 		int y = this.dialogY + UI.PADDING + 4;
 
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.conflict.header"),
-			centerX, y, 0xFFE04B4B);
+		Text header = Text.translatable("mod-menu.conflict.header");
+		context.drawText(this.textRenderer, header, centerX - this.textRenderer.getWidth(header) / 2, y, 0xFFE04B4B, true);
 		y += 16;
 
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.conflict.line1"),
-			centerX, y, UI.COLOR_TEXT);
+		Text line1 = Text.translatable("mod-menu.conflict.line1");
+		context.drawText(this.textRenderer, line1, centerX - this.textRenderer.getWidth(line1) / 2, y, UI.COLOR_TEXT, true);
 		y += 12;
 
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.conflict.line2"),
-			centerX, y, UI.COLOR_SECONDARY);
+		Text line2 = Text.translatable("mod-menu.conflict.line2");
+		context.drawText(this.textRenderer, line2, centerX - this.textRenderer.getWidth(line2) / 2, y, UI.COLOR_SECONDARY, true);
 		y += 12;
 
-		context.drawCenteredTextWithShadow(this.textRenderer,
-			Text.translatable("mod-menu.conflict.line3"),
-			centerX, y, UI.COLOR_DIM);
+		Text line3 = Text.translatable("mod-menu.conflict.line3");
+		context.drawText(this.textRenderer, line3, centerX - this.textRenderer.getWidth(line3) / 2, y, UI.COLOR_DIM, true);
 	}
 
 	@Override
