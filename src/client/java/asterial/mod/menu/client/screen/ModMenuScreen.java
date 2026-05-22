@@ -402,10 +402,6 @@ public class ModMenuScreen extends Screen {
 		int totalHeight = items.size() * SUGGESTION_HEIGHT;
 		boolean isHistory = isSearchHistoryVisible();
 
-		var matrices = context.getMatrices();
-		matrices.push();
-		matrices.translate(0, 0, 500);
-
 		context.fill(sx, sy, sx + sw, sy + totalHeight, 0xFF1A1A1A);
 
 		for (int i = 0; i < items.size(); i++) {
@@ -427,8 +423,7 @@ public class ModMenuScreen extends Screen {
 				isHistory ? 0xFFAAAAAA : 0xFFFFFF);
 		}
 
-		matrices.pop();
-	}
+		}
 
 	private void toggleBookmark(String modId) {
 		ModMenuConfig config = ModMenuConfig.getInstance();
